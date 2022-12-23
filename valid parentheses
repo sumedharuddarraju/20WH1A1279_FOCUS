@@ -35,22 +35,23 @@ public:
        stack<char> s;
        for(int i=0;i<str.length();i++)
        {
-           char ch=str[i];
-        if(s.empty())
-        return false;
-        else if(ch=='('||ch=='{'||ch=='[')
-        s.push(ch);
+           
+    
+         if(str[i]=='('||str[i]=='{'||str[i]=='[')
+        s.push(str[i]);
         else
         {
-        if(ch==')'&&s.peek()=='(')
+            if(s.empty())
+            return false;
+        else if(str[i]==')'&&s.top()=='(')
         {
             s.pop();
         }
-        else if(ch==']'&&s.peek()=='[')
+        else if(str[i]==']'&&s.top()=='[')
         {
             s.pop();
         }
-        else if(ch=='}'&&s.peek()=='{')
+        else if(str[i]=='}'&&s.top()=='{')
         {
             s.pop();
         }
@@ -59,7 +60,9 @@ public:
             return false;
         }
         }
-       } 
-       return s.empty();
+       }
+        return s.empty();
+       
+       
     }
 };
